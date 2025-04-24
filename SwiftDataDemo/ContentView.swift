@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.modelContext) private var context
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            
+            Text("Tap on this ubtton to add data")
+            Button("Add Data") {
+                addItem()
+            }
         }
         .padding()
+    }
+    
+    func addItem() {
+        let item = DataItem(name: "Test Item")
+        context.insert(item)
     }
 }
 
